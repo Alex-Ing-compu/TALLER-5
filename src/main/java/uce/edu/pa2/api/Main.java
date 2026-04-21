@@ -11,63 +11,64 @@ public class Main {
     public static void main(String... args) {
 
         Quarkus.run(App.class, args);
-
     }
 
-
     public static class App implements QuarkusApplication{
-
-        //Modelos IoC
-        //1. DI
-        //@Inject
-        //private PedidoService pedidoService;
         @Inject
-        private PedidoService1 pedidoService1;
+        private AmbitoAplicacion ambitoAplicacion;
+
         @Inject
-        private PagoTarjetaCredito pagoTc;
+        private ClaseIntermedia claseIntermedia;
+
         @Inject
-        private PagoEfectivo pagoE;
+        private AmbitoAplicacion ambitoRequest;
+
         @Inject
-        private ComprobantePDF cfe;
+        private AmbitoInject ambitoInject;
+
         @Inject
-        private Factura fc;
-
-
-
-
-
-        //2. LookUp o  service locator
-        //private PedidoService pedidoService = CDI.current().select(PedidoService.class).get();
+        private AmbitoSingleton ambitoSingleton;
 
         @Override
         public int run(String... args) throws Exception {
 
+        System.out.println(this.ambitoAplicacion);
 
-        //Caso1
-        System.out.println("Caso 1 Email: ");
+        System.out.println(this.ambitoAplicacion.incrementar());
+        System.out.println(this.ambitoAplicacion.incrementar());
+        System.out.println(this.ambitoAplicacion.incrementar());
 
-        Pedido pedido1 = new Pedido("Alex Cordova", "Chifles", 110.5, "alex@uce.com");
+        this.claseIntermedia.imprimirObjetoValor();
+
+        /* 
+        System.out.println("***********Ambito request***********");
+
+        System.out.println(this.ambitoRequest.incrementar());
+        System.out.println(this.ambitoRequest.incrementar());
+        System.out.println(this.ambitoRequest.incrementar());
+        */
         
-        pedidoService1.registrar(pedido1, pagoE,fc);
-        System.out.println("---------------------------------");
 
-       //Caso 2
-        System.out.println("Caso 2 SMS: ");
+        System.out.println("***********Ambito DEPENDT***********");
+        System.out.println(this.ambitoInject.incrementar());
+        System.out.println(this.ambitoInject.incrementar());
+        System.out.println(this.ambitoInject.incrementar());
 
-        Pedido pedido2 = new Pedido("Jhon Cordova", "Cola cola", 75.5, "jhon@uce.com");
 
-        pedidoService1.registrar(pedido2, pagoTc, cfe); 
-        System.out.println("---------------------------------");
-       
-        //Caso 3
-        System.out.println("Caso 3 Whatsapp: ");
+        this.claseIntermedia.imprimirObjetoValorInject();
 
-        Pedido pedido3 = new Pedido("Pedro Paez", "PC", 25.5, "jhon@uce.edu.ec");
+        System.out.println("***********Ambito Singleton***********");
         
-        pedidoService1.registrar(pedido3, pagoE, cfe);
+        System.out.println(this.ambitoSingleton);
 
-        
+        System.out.println(this.ambitoSingleton.incrementar());
+        System.out.println(this.ambitoSingleton.incrementar());
+        System.out.println(this.ambitoSingleton.incrementar());
+
+        this.claseIntermedia.imprimirObjetoValorSingleton();
+
             return 0;
+
         }
     }
 }
