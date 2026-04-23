@@ -10,7 +10,7 @@ public class AmbitoAplicacion {
     public int incrementar() {
         
         return ++contador;
+        
     }
-
     
 }
