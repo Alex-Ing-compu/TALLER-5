@@ -2,6 +2,7 @@ package uce.edu.pa2.api;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
+//@Dependent
 @ApplicationScoped
 public class EstadisticasVentasGlobales {
 
