@@ -1,4 +1,4 @@
-# Notas sobre el ciclo de vida de los Beans (CDI Scopes)
+# Ciclo de vida de los Beans (CDI Scopes)
 ```shell script 
 Autor: Jhon Córdova
 ```
