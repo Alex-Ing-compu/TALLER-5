@@ -3,7 +3,7 @@
 Autor: Jhon Córdova
 ```
 
-## @ApplicationScoped
+## @ApplicationScoped:
 Una única instancia durante todad la aplicación.
 Los beans con este alcance son compartidos por toda la aplicación. Se crea una única instancia que vive durante toda la ejecución de la app.
 
@@ -15,7 +15,7 @@ Los beans con este alcance son compartidos por toda la aplicación. Se crea una 
 6. **Pool de Conexiones a APIs Externas**: Servicio que mantiene una conexión persistente o pool para consumir un servicio de terceros.
 7. **Servicio de Scheduler (Tareas Programadas)**: Clase que gestiona los cron jobs o tareas que corren en background durante todo el ciclo de vida de la app.
 
-## @Dependent
+## @Dependent:
 Se crea una nueva instancia cada vez que se inyecta.
 Es el alcance por defecto. La instancia vive y muere junto con el bean donde fue inyectado. Es ideal para objetos que no deben ser compartidos.
 
@@ -27,7 +27,7 @@ Es el alcance por defecto. La instancia vive y muere junto con el bean donde fue
 6. **Buffer Temporal**: Objeto que acumula datos durante un proceso corto y se destruye al finalizar la transacción o el método.
 7. **Wrapper de Transacción Específica**: Clase que agrupa lógica de negocio que debe ejecutarse dentro de una transacción que vive solo mientras el bean inyector está activo.
 
-## @Singleton
+## @Singleton:
 Una unica instancia en toda la aplicación, controlada estrictamente.
 Similar a ApplicationScoped, pero sin el proxy de CDI. Se usa para acceso directo y es extremadamente eficiente para compartir estado simple, pero requiere gestión de hilos (thread-safety).
 
