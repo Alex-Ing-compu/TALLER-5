@@ -17,48 +17,23 @@ public class Main {
     public static class App implements QuarkusApplication{
        
         @Inject
-        private ProcesadorVentaEnlineaService procesadorVentaEnlineaService;
-
-        @Inject
-        private ProcesadorVentaService procesadorVentaService;
-
-        @Inject
-        private ProcesadorVentaService1 procesadorVentaService1;
-        
-        @Inject
-        private EstadisticasVentasGlobales estadisticasVentasGlobales;
+        private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
+            @Inject
+        private InventarioService inventarioService;
 
         @Override
         public int run(String... args) throws Exception {
 
             Venta v1 = new Venta("Jhon Córdova", 70);
-            this.procesadorVentaService.procesar(v1);
+            Venta v2 = new Venta("Jhon Córdova", 50);
 
-            Venta v2 = new Venta("Pedro Paez", 40);
-            this.procesadorVentaService.procesar(v2);
+            Venta v3 = new Venta("Alex Córdova", 50);
 
-            Venta v3 = new Venta("Alex Vivas", 20);
-            this.procesadorVentaService.procesar(v3);
+            this.procesadorVentaServiceTiempo.procesar(v1);
+            this.procesadorVentaServiceTiempo.reProcesar(v2);
 
-
-            Venta v4 = new Venta("Alex Vivas", 20);
-            this.procesadorVentaService1.procesar1(v4);
-
-            Venta v5 = new Venta("Alex Vivas", 20);
-            this.procesadorVentaService1.procesar1(v5);
-
-
-            System.out.println("*******Con clase procesador venta en linea******");
-            Venta v6 = new Venta("Alex Vivas", 20);
-            this.procesadorVentaEnlineaService.procesar1(v6);
-
-            Venta v7 = new Venta("Alex Vivas", 20);
-            this.procesadorVentaEnlineaService.procesar1(v7);
-
-            this.estadisticasVentasGlobales.mostrarEstadisticasGlobales();
-            //this.estadisticasVentasGlobales.registrarVenta(100);
-
-
+            System.out.println("Procesando venta con inventario service");
+            this.inventarioService.procesar(v3);
 
         return 0;
         }
