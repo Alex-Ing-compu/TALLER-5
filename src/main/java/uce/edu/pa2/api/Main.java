@@ -8,66 +8,37 @@ import jakarta.inject.Inject;
 @QuarkusMain
 public class Main {
 
+
     public static void main(String... args) {
 
         Quarkus.run(App.class, args);
-
     }
 
-
     public static class App implements QuarkusApplication{
-
-        //Modelos IoC
-        //1. DI
-        //@Inject
-        //private PedidoService pedidoService;
+       
         @Inject
-        private PedidoService1 pedidoService1;
+        private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
+    
         @Inject
-        private PagoTarjetaCredito pagoTc;
-        @Inject
-        private PagoEfectivo pagoE;
-        @Inject
-        private ComprobantePDF cfe;
-        @Inject
-        private Factura fc;
-
-
-
-
-
-        //2. LookUp o  service locator
-        //private PedidoService pedidoService = CDI.current().select(PedidoService.class).get();
+        private InventarioService inventarioService;
 
         @Override
         public int run(String... args) throws Exception {
 
+            Venta v1 = new Venta("Jhon Córdova", 70);
+            Venta v2 = new Venta("Jhon Córdova", 50);
 
-        //Caso1
-        System.out.println("Caso 1 Email: ");
+            Venta v3 = new Venta("Alex Córdova", 50);
 
-        Pedido pedido1 = new Pedido("Alex Cordova", "Chifles", 110.5, "alex@uce.com");
-        
-        pedidoService1.registrar(pedido1, pagoE,fc);
-        System.out.println("---------------------------------");
+            this.procesadorVentaServiceTiempo.procesar(v1);
+            this.procesadorVentaServiceTiempo.reProcesar(v2);
 
-       //Caso 2
-        System.out.println("Caso 2 SMS: ");
+            //System.out.println("Procesando venta con inventario service");
+            //this.inventarioService.procesar(v3);
 
-        Pedido pedido2 = new Pedido("Jhon Cordova", "Cola cola", 75.5, "jhon@uce.com");
 
-        pedidoService1.registrar(pedido2, pagoTc, cfe); 
-        System.out.println("---------------------------------");
-       
-        //Caso 3
-        System.out.println("Caso 3 Whatsapp: ");
 
-        Pedido pedido3 = new Pedido("Pedro Paez", "PC", 25.5, "jhon@uce.edu.ec");
-        
-        pedidoService1.registrar(pedido3, pagoE, cfe);
-
-        
-            return 0;
+        return 0;
         }
     }
 }
