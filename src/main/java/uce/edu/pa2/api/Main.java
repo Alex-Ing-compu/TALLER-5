@@ -18,7 +18,8 @@ public class Main {
        
         @Inject
         private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
-            @Inject
+    
+        @Inject
         private InventarioService inventarioService;
 
         @Override
@@ -32,8 +33,10 @@ public class Main {
             this.procesadorVentaServiceTiempo.procesar(v1);
             this.procesadorVentaServiceTiempo.reProcesar(v2);
 
-            System.out.println("Procesando venta con inventario service");
-            this.inventarioService.procesar(v3);
+            //System.out.println("Procesando venta con inventario service");
+            //this.inventarioService.procesar(v3);
+
+
 
         return 0;
         }

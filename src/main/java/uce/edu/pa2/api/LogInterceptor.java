@@ -5,27 +5,30 @@ import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
 
-@MedirTiempo
+@Log
 @Interceptor
 @Priority(2)
-public class MedirTiempoInterceptor {
+public class LogInterceptor {
     @AroundInvoke //Este metodo se utilizara para ejecutar al rededor de la ejecucion del metodo 
                   //Se va ejecutar al rededor del metodo de negocio
     public Object medir(InvocationContext contex) throws Exception{
 
-        System.out.println("Se ejecuto antes del metodo");
+        System.out.println("Se ejecuto Log antes del metodo");
+        System.out.println("Interceptado el metodo:" + contex.getMethod().getName());
 
-        System.out.println("Metodo interceptado:" + contex.getMethod().getName());
+        Object[] args = contex.getParameters();
+        for(int i=0 ; i<args.length; i++){
+            System.out.println("Argumento: " + args[i]);
+            Object obj = args[i];
+            Venta venta = (Venta)obj;
+            System.out.println(venta.getCliente());
+            System.out.println(venta.getTotal());
+            
+        }
 
-        long inicio = System.currentTimeMillis();
-        //inicia la ejecucion del metodo 
-        //si no se llama al metodo proceed, nunca se ejecuta el metodo
         Object resultado = contex.proceed();
         
-        long fin  = System.currentTimeMillis();
-
-        long tiempoTranscurrido = fin - inicio;
-        System.out.println("Tiempo transcurrido: " + tiempoTranscurrido);
+  
 
         return resultado;
 

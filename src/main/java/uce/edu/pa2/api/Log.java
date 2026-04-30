@@ -17,7 +17,7 @@ import jakarta.interceptor.InterceptorBinding;
                                     // se va a mantener en tiempo de ejecucion
                                     
 //Estamos declarando un interceptor
-public @interface MedirTiempo {
+public @interface Log {
 
     
 

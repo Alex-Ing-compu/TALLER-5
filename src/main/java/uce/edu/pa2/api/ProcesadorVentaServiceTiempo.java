@@ -9,12 +9,16 @@ public class ProcesadorVentaServiceTiempo {
     @Inject
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
+    
     @MedirTiempo
+    @Log
     public void procesar(Venta venta){
+
+        //System.out.println("Entro al metodo con los siguientes valores: " + venta.getCliente());
 
         //inica la venta
         System.out.println("Procesando pedido...");
-        System.out.println("Cliente venta a reprocesar: " + venta.getCliente());
+        //System.out.println("Cliente venta a reprocesar: " + venta.getCliente());
         //consultando el stock de cada item
         //consultando en la base de datos 
         //finaliza venta
@@ -27,7 +31,8 @@ public class ProcesadorVentaServiceTiempo {
 
         //registra estdisticas
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
-        System.out.println("Finale del metodo");
+        System.out.println("Final del metodo");
+        //this.reProcesar(venta); //No se va a ejecutar interceptor del metodo, porque es una llamada interna
         
 
     }
@@ -50,7 +55,7 @@ public class ProcesadorVentaServiceTiempo {
 
         //registra estdisticas
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
-        System.out.println("Finale del metodo reprocesar");
+        System.out.println("Final del metodo reprocesar");
         
 
     }
