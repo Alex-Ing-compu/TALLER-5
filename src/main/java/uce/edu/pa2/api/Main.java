@@ -17,27 +17,16 @@ public class Main {
     public static class App implements QuarkusApplication{
        
         @Inject
-        private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
-    
-        @Inject
-        private InventarioService inventarioService;
+        private ProcesadorCompraService procesadorCompraService;
 
         @Override
         public int run(String... args) throws Exception {
 
-            Venta v1 = new Venta("Jhon Córdova", 70);
-            Venta v2 = new Venta("Jhon Córdova", 50);
+            Compra compra1 = new Compra("Jhon Córdova", 100);
+            //Compra compra2 = new Compra("Alex Córdova", 40);
+            this.procesadorCompraService.procesar(compra1);
 
-            Venta v3 = new Venta("Alex Córdova", 50);
-
-            this.procesadorVentaServiceTiempo.procesar(v1);
-            this.procesadorVentaServiceTiempo.reProcesar(v2);
-
-            //System.out.println("Procesando venta con inventario service");
-            //this.inventarioService.procesar(v3);
-
-
-
+          
         return 0;
         }
     }
