@@ -3,7 +3,7 @@ package uce.edu.pa2.api;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Default;
 
-@ApplicationScoped 
+@ApplicationScoped
 @Default
 //esta lclase la va a getionar el contenedor de CDI,
 //  es decir, va a ser un bean gestionado por CDI
