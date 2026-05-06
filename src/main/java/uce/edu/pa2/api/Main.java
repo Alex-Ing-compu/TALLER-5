@@ -8,7 +8,6 @@ import jakarta.inject.Inject;
 @QuarkusMain
 public class Main {
 
-
     public static void main(String... args) {
 
         Quarkus.run(App.class, args);
@@ -19,12 +18,16 @@ public class Main {
         @Inject
         private ProcesadorCompraService procesadorCompraService;
 
+        @Inject
+        private ProcesadorCompraService1 procesadorCompraSerivce1;
+
         @Override
         public int run(String... args) throws Exception {
 
             Compra compra1 = new Compra("Jhon Córdova", 100);
             //Compra compra2 = new Compra("Alex Córdova", 40);
-            this.procesadorCompraService.procesar(compra1);
+            //this.procesadorCompraService.procesar(compra1);
+            this.procesadorCompraSerivce1.procesarCompra(compra1);
 
           
         return 0;

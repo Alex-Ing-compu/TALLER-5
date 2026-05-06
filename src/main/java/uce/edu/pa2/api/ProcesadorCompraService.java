@@ -18,7 +18,7 @@ public class ProcesadorCompraService {
             total =  des.aplicar(total);
         }
         compra.setTotal(total);
-
+        
         System.out.println("Valor a pagar es: " + compra.getTotal());
     }
 }

@@ -5,8 +5,7 @@ import jakarta.enterprise.context.Dependent;
 @Dependent
 //@ApplicationScoped
 public class TrakingVenta {
-
-    
+   
     private long tiempoInicio = 0;
     private long tiempoFinal = 0;
 
@@ -14,7 +13,7 @@ public class TrakingVenta {
     private long tiempoTotalAcumulado = 0;
     private int numeroOperaciones = 0;
 
-
+    
     public void iniciar(){
         this.tiempoInicio = System.currentTimeMillis();
 
