@@ -26,8 +26,8 @@ public class Main {
 
             Compra compra1 = new Compra("Jhon Córdova", 100);
             //Compra compra2 = new Compra("Alex Córdova", 40);
-            //this.procesadorCompraService.procesar(compra1);
-            this.procesadorCompraSerivce1.procesarCompra(compra1);
+            this.procesadorCompraService.procesar(compra1);
+            //this.procesadorCompraSerivce1.procesarCompra(compra1);
 
           
         return 0;
